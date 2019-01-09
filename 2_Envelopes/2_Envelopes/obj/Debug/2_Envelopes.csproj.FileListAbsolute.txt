@@ -1,0 +1,6 @@
+E:\Templates\SoftServe\Elementary\2_Envelopes\2_Envelopes\bin\Debug\2_Envelopes.exe.config
+E:\Templates\SoftServe\Elementary\2_Envelopes\2_Envelopes\bin\Debug\2_Envelopes.exe
+E:\Templates\SoftServe\Elementary\2_Envelopes\2_Envelopes\bin\Debug\2_Envelopes.pdb
+E:\Templates\SoftServe\Elementary\2_Envelopes\2_Envelopes\obj\Debug\2_Envelopes.csprojResolveAssemblyReference.cache
+E:\Templates\SoftServe\Elementary\2_Envelopes\2_Envelopes\obj\Debug\2_Envelopes.exe
+E:\Templates\SoftServe\Elementary\2_Envelopes\2_Envelopes\obj\Debug\2_Envelopes.pdb
