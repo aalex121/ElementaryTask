@@ -1,0 +1,6 @@
+E:\Templates\SoftServe\Elementary\3_TriangleSort\3_TriangleSort\bin\Debug\3_TriangleSort.exe.config
+E:\Templates\SoftServe\Elementary\3_TriangleSort\3_TriangleSort\bin\Debug\3_TriangleSort.exe
+E:\Templates\SoftServe\Elementary\3_TriangleSort\3_TriangleSort\bin\Debug\3_TriangleSort.pdb
+E:\Templates\SoftServe\Elementary\3_TriangleSort\3_TriangleSort\obj\Debug\3_TriangleSort.csprojResolveAssemblyReference.cache
+E:\Templates\SoftServe\Elementary\3_TriangleSort\3_TriangleSort\obj\Debug\3_TriangleSort.exe
+E:\Templates\SoftServe\Elementary\3_TriangleSort\3_TriangleSort\obj\Debug\3_TriangleSort.pdb
