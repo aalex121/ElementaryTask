@@ -1,6 +1,0 @@
-E:\Templates\SoftServe\Elementary\1_Chessboard\1_Chessboard\bin\Debug\1_Chessboard.exe.config
-E:\Templates\SoftServe\Elementary\1_Chessboard\1_Chessboard\obj\Debug\1_Chessboard.csprojResolveAssemblyReference.cache
-E:\Templates\SoftServe\Elementary\1_Chessboard\1_Chessboard\bin\Debug\1_Chessboard.exe
-E:\Templates\SoftServe\Elementary\1_Chessboard\1_Chessboard\bin\Debug\1_Chessboard.pdb
-E:\Templates\SoftServe\Elementary\1_Chessboard\1_Chessboard\obj\Debug\1_Chessboard.exe
-E:\Templates\SoftServe\Elementary\1_Chessboard\1_Chessboard\obj\Debug\1_Chessboard.pdb

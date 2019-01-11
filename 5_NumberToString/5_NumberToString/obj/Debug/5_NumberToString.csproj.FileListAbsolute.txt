@@ -1,6 +1,0 @@
-E:\Templates\SoftServe\Elementary\5_NumberToString\5_NumberToString\bin\Debug\5_NumberToString.exe.config
-E:\Templates\SoftServe\Elementary\5_NumberToString\5_NumberToString\bin\Debug\5_NumberToString.exe
-E:\Templates\SoftServe\Elementary\5_NumberToString\5_NumberToString\bin\Debug\5_NumberToString.pdb
-E:\Templates\SoftServe\Elementary\5_NumberToString\5_NumberToString\obj\Debug\5_NumberToString.csprojResolveAssemblyReference.cache
-E:\Templates\SoftServe\Elementary\5_NumberToString\5_NumberToString\obj\Debug\5_NumberToString.exe
-E:\Templates\SoftServe\Elementary\5_NumberToString\5_NumberToString\obj\Debug\5_NumberToString.pdb
