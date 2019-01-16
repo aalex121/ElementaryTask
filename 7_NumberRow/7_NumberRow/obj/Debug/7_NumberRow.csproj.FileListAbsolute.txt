@@ -1,0 +1,7 @@
+G:\Templates\SoftServe\Elementary\7_NumberRow\7_NumberRow\bin\Debug\7_NumberRow.exe.config
+G:\Templates\SoftServe\Elementary\7_NumberRow\7_NumberRow\bin\Debug\7_NumberRow.exe
+G:\Templates\SoftServe\Elementary\7_NumberRow\7_NumberRow\bin\Debug\7_NumberRow.pdb
+G:\Templates\SoftServe\Elementary\7_NumberRow\7_NumberRow\obj\Debug\7_NumberRow.csprojAssemblyReference.cache
+G:\Templates\SoftServe\Elementary\7_NumberRow\7_NumberRow\obj\Debug\7_NumberRow.csproj.CoreCompileInputs.cache
+G:\Templates\SoftServe\Elementary\7_NumberRow\7_NumberRow\obj\Debug\7_NumberRow.exe
+G:\Templates\SoftServe\Elementary\7_NumberRow\7_NumberRow\obj\Debug\7_NumberRow.pdb
