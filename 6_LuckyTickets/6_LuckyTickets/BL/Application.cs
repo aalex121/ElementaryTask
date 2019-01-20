@@ -9,6 +9,8 @@ namespace _6_LuckyTickets
 {
     static class Application
     {
+        public const string ALGORYTHM_NAME_MOSCOW = "moscow";
+        public const string ALGORYTHM_NAME_PITER = "piter";
         const string VALID_ALGORYTHM_FILE_EXTENSION = ".txt";
         const int DEFAULT_DIGITS_NUMBER = 6; 
 
@@ -33,12 +35,12 @@ namespace _6_LuckyTickets
                 return;
             }
 
-            string currentAlgorhytm;
+            TicketCountAlgorhytmTypes currentAlgorhytm;
 
             if (TryGetAlgorhytm(algorytmFilePath, out currentAlgorhytm))
             {
-                LuckyTicketsCounter ticketCounter = new LuckyTicketsCounter(DEFAULT_DIGITS_NUMBER);
-                ulong ticketCount = ticketCounter.GetLuckyTicketsQuantity(currentAlgorhytm);
+                LuckyTicketsCounter ticketCounter = new LuckyTicketsCounter(DEFAULT_DIGITS_NUMBER, currentAlgorhytm);
+                ulong ticketCount = ticketCounter.GetLuckyTicketsQuantity();
 
                 UI.PrintTicketsCount(ticketCount);
             }
@@ -60,10 +62,10 @@ namespace _6_LuckyTickets
             return isValid;
         }
 
-        private static bool TryGetAlgorhytm(string filePath, out string result)
+        private static bool TryGetAlgorhytm(string filePath, out TicketCountAlgorhytmTypes result)
         {
             bool isAlgorhytmFound = false;
-            result = string.Empty;
+            result = TicketCountAlgorhytmTypes.None;
 
             using (StreamReader file = new StreamReader(filePath))
             {
@@ -77,11 +79,17 @@ namespace _6_LuckyTickets
                     {
                         currentLine = currentLine.Trim().ToLower();
 
-                        if (currentLine == LuckyTicketsCounter.ALGORYTHM_NAME_MOSCOW ||
-                                currentLine == LuckyTicketsCounter.ALGORYTHM_NAME_PITER)
+                        if (currentLine == ALGORYTHM_NAME_MOSCOW)
                         {
                             isAlgorhytmFound = true;
-                            result = currentLine;
+                            result = TicketCountAlgorhytmTypes.Moscow;
+                            break;
+                        }
+
+                        if (currentLine == ALGORYTHM_NAME_PITER)
+                        {
+                            isAlgorhytmFound = true;
+                            result = TicketCountAlgorhytmTypes.Piter;
                             break;
                         }
                     }

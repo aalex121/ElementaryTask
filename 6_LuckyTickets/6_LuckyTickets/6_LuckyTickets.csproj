@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BL\Application.cs" />
     <Compile Include="BL\LuckyTicketsCounter.cs" />
+    <Compile Include="Enums\TicketCountAlgorhytmTypes.cs" />
     <Compile Include="Exceptions\InvalidTicketDigitsCountException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

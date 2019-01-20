@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 namespace _6_LuckyTickets
 {
     class LuckyTicketsCounter
-    {
-        public const string ALGORYTHM_NAME_MOSCOW = "moscow";
-        public const string ALGORYTHM_NAME_PITER = "piter";
+    {   
         const int TEN_VALUE = 10;
         const int MAX_ONE_DIGIT_NUMBER = 9;
 
-        public LuckyTicketsCounter(int digitsCount)
+        public LuckyTicketsCounter(int digitsCount, TicketCountAlgorhytmTypes inputAlgorhytmType)
         {
             if (digitsCount % 2 != 0 || digitsCount <= 0)
             {
@@ -21,38 +19,38 @@ namespace _6_LuckyTickets
             }
 
             TicketDigitsCount = digitsCount;
+            AlgorhytmType = inputAlgorhytmType;
         }
 
-        public int TicketDigitsCount { get; private set; }        
-        
-        public ulong GetLuckyTicketsQuantity(string algorythmName)
+        public int TicketDigitsCount { get; private set; }
+
+        public TicketCountAlgorhytmTypes AlgorhytmType { get; private set; }
+
+        public ulong GetLuckyTicketsQuantity()
         {
+            if (_luckyTicketsQuantity > 0)
+            {
+                return _luckyTicketsQuantity;
+            }
+
             ulong result = 0;
 
-            if (algorythmName.Length == 0)
-            {
-                throw new Exception();
-            }
-
-            algorythmName = algorythmName.Trim().ToLower();
-
-            if (algorythmName != ALGORYTHM_NAME_MOSCOW && algorythmName != ALGORYTHM_NAME_PITER)
-            {
-                throw new Exception();
-            }
-
-            if (algorythmName == ALGORYTHM_NAME_MOSCOW)
+            if (AlgorhytmType == TicketCountAlgorhytmTypes.Moscow)
             {
                 result = CountLuckyTicketsMoscow(TicketDigitsCount);
             }
 
-            if (algorythmName == ALGORYTHM_NAME_PITER)
+            if (AlgorhytmType == TicketCountAlgorhytmTypes.Piter)
             {
                 result = CountLuckyTicketsPiter(TicketDigitsCount);
             }
 
+            _luckyTicketsQuantity = result;
+
             return result;
         }
+
+        private ulong _luckyTicketsQuantity = 0;
 
         /// <summary>
         /// Данный алгоритм рассчитвает количество комбинаций
@@ -60,7 +58,7 @@ namespace _6_LuckyTickets
         /// </summary>
         /// <param name="digits">Количество разрядов</param>
         /// <returns></returns>
-        public static ulong CountLuckyTicketsMoscow(int digits)
+        private static ulong CountLuckyTicketsMoscow(int digits)
         {
             if (digits % 2 != 0 || digits <= 0)
             {
@@ -92,7 +90,7 @@ namespace _6_LuckyTickets
         /// </summary>
         /// <param name="digits"></param>
         /// <returns></returns>
-        public static ulong CountLuckyTicketsPiter(int digits)        {
+        private static ulong CountLuckyTicketsPiter(int digits)        {
             
             return CountLuckyTicketsMoscow(digits);
         }
