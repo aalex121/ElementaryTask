@@ -1,7 +1,0 @@
-G:\Templates\SoftServe\Elementary\6_LuckyTickets\6_LuckyTickets\bin\Debug\6_LuckyTickets.exe.config
-G:\Templates\SoftServe\Elementary\6_LuckyTickets\6_LuckyTickets\bin\Debug\6_LuckyTickets.exe
-G:\Templates\SoftServe\Elementary\6_LuckyTickets\6_LuckyTickets\bin\Debug\6_LuckyTickets.pdb
-G:\Templates\SoftServe\Elementary\6_LuckyTickets\6_LuckyTickets\obj\Debug\6_LuckyTickets.csprojAssemblyReference.cache
-G:\Templates\SoftServe\Elementary\6_LuckyTickets\6_LuckyTickets\obj\Debug\6_LuckyTickets.csproj.CoreCompileInputs.cache
-G:\Templates\SoftServe\Elementary\6_LuckyTickets\6_LuckyTickets\obj\Debug\6_LuckyTickets.exe
-G:\Templates\SoftServe\Elementary\6_LuckyTickets\6_LuckyTickets\obj\Debug\6_LuckyTickets.pdb

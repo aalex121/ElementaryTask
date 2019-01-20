@@ -1,7 +1,0 @@
-G:\Templates\SoftServe\Elementary\8_Fibonacci\8_Fibonacci\bin\Debug\8_Fibonacci.exe.config
-G:\Templates\SoftServe\Elementary\8_Fibonacci\8_Fibonacci\bin\Debug\8_Fibonacci.exe
-G:\Templates\SoftServe\Elementary\8_Fibonacci\8_Fibonacci\bin\Debug\8_Fibonacci.pdb
-G:\Templates\SoftServe\Elementary\8_Fibonacci\8_Fibonacci\obj\Debug\8_Fibonacci.csprojAssemblyReference.cache
-G:\Templates\SoftServe\Elementary\8_Fibonacci\8_Fibonacci\obj\Debug\8_Fibonacci.csproj.CoreCompileInputs.cache
-G:\Templates\SoftServe\Elementary\8_Fibonacci\8_Fibonacci\obj\Debug\8_Fibonacci.exe
-G:\Templates\SoftServe\Elementary\8_Fibonacci\8_Fibonacci\obj\Debug\8_Fibonacci.pdb
