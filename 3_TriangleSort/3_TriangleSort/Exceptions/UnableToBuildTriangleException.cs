@@ -8,8 +8,10 @@ namespace _3_TriangleSort
 {
     class UnableToBuildTriangleException : Exception
     {
-        const string SIDES_MESSAGE = "Triangle sides:";
-        const string DEFAULT_ERROR_MESSAGE = "Unable to build a triangle";
+        #region Constants
+        private const string SIDES_MESSAGE = "Triangle sides:";
+        private const string DEFAULT_ERROR_MESSAGE = "Unable to build a triangle";
+        #endregion
 
         public UnableToBuildTriangleException()
         {                

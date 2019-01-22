@@ -8,14 +8,16 @@ namespace _7_NumberRow
 {
     class InvalidNubmerRowParameterException : Exception
     {
-        const string ERROR_MESSAGE = "Invalid Number row parameter. Number must be not less than";
-        const string INVALID_PARAM_MESSAGE = "Provided Number is";
+        #region Constants
+        private const string ERROR_MESSAGE = "Invalid Number row parameter. Number must be not less than";
+        private const string INVALID_PARAM_MESSAGE = "Provided Number is";
+        #endregion
 
         public InvalidNubmerRowParameterException()
         {            
         }
 
-        public InvalidNubmerRowParameterException(int numericParam, int minValidValue)
+        public InvalidNubmerRowParameterException(uint numericParam, int minValidValue)
         {
             _errorMessageString = string.Format("{0}: {1} {2}: {3}", ERROR_MESSAGE, minValidValue,
                 INVALID_PARAM_MESSAGE, numericParam);

@@ -8,12 +8,14 @@ namespace _8_Fibonacci
 {
     static class UI
     {
-        const string HELP_MESSAGE = "Please provide two integers <Start Value> <End Value>";
-        const string USER_INPUT_MESSAGE = "Your input is";
-        const string FIBONACCI_ROW_MESSAGE = "============== Fibonacci row ==============";
-        const string PRESS_ANY_KEY_MESSAGE = "Press any key...";
-        const string NOT_AVAILABLE = "N/A";
-        const string EMPTY_LIST_MESSAGE = "Nothing here!";
+        #region Constants
+        private const string HELP_MESSAGE = "Please provide two integers <Start Value> <End Value>";
+        private const string USER_INPUT_MESSAGE = "Your input is";
+        private const string FIBONACCI_ROW_MESSAGE = "============== Fibonacci row ==============";
+        private const string PRESS_ANY_KEY_MESSAGE = "Press any key...";
+        private const string NOT_AVAILABLE = "N/A";
+        private const string EMPTY_LIST_MESSAGE = "Nothing here!";
+        #endregion
 
         public static void PrintHelp(params string[] values)
         {
@@ -35,7 +37,7 @@ namespace _8_Fibonacci
             Console.ReadKey();
         }
 
-        public static void PrintNumericRow(FibonacciRow numericRow)
+        public static void PrintNumericRow(IEnumerable<int> numericRow)
         {
             if (numericRow.Count() == 0)
             {

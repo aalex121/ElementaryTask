@@ -17,9 +17,9 @@ namespace _7_NumberRow
             }
 
             string stringInput = args[0];
-            int numinput;
+            uint numinput;
 
-            if (int.TryParse(stringInput, out numinput))
+            if (uint.TryParse(stringInput, out numinput))
             {
                 try
                 {

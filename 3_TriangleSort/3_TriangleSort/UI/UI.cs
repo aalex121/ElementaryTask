@@ -8,16 +8,18 @@ namespace _3_TriangleSort
 {
     static class UI
     {
-        const string NAME_INPUT_PROMPT = "Please enter Triangle Name";
-        const string LENGTH_INPUT_PROMPT = "Please enter the length of";
-        const string HELP_MESSAGE = "Side Length must be positive number!";
-        const string EXIT_PROMPT = "Exit now? (y/n)";
-        const string TRIANGLE_INPUT_PROMPT = "Add one more triangle? (y/n)";
-        const string YES_PROMPT_FULL = "yes";
-        const string YES_PROMPT_SHORT = "y";
-        const string TRIANGLE_LIST_HEADER = "=============== Triangle List ===============";
-        const string PRESS_ANY_KEY_MESSAGE = "Press any key to continue...";
-        const string EMPTY_LIST_MESSAGE = "No triangles found!";
+        #region Constants
+        private const string NAME_INPUT_PROMPT = "Please enter Triangle Name";
+        private const string LENGTH_INPUT_PROMPT = "Please enter the length of";
+        private const string HELP_MESSAGE = "Side Length must be positive number!";
+        private const string EXIT_PROMPT = "Exit now? (y/n)";
+        private const string TRIANGLE_INPUT_PROMPT = "Add one more triangle? (y/n)";
+        private const string YES_PROMPT_FULL = "yes";
+        private const string YES_PROMPT_SHORT = "y";
+        private const string TRIANGLE_LIST_HEADER = "=============== Triangle List ===============";
+        private const string PRESS_ANY_KEY_MESSAGE = "Press any key to continue...";
+        private const string EMPTY_LIST_MESSAGE = "No triangles found!";
+        #endregion
 
         public static void ReqestTriangleParams(out string name, out double side1, out double side2,
             out double side3) 

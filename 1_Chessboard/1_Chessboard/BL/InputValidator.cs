@@ -8,7 +8,9 @@ namespace _1_Chessboard
 {
     static class InputValidator
     {
-        const ushort MIN_USER_PARAMS_COUNT = 2;        
+        #region Constants
+        private const ushort MIN_USER_PARAMS_COUNT = 2;
+        #endregion
 
         public static bool UserInputIsValid(string[] args)
         {

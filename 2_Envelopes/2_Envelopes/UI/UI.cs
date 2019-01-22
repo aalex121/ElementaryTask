@@ -8,18 +8,20 @@ namespace _2_Envelopes
 {
     static class UI
     {
-        const string INPUT_REQUEST_MESSAGE = "Please enter";
-        const string FIRST_ENVELOPE_NAME = "First envelope";
-        const string SECOND_ENVELOPE_NAME = "Second envelope";
-        const string WIDTH_PARAM_NAME = "Width";
-        const string HEIGHT_PARAM_NAME = "Height";
-        const string COMPARE_RESULT_POSITIVE = "Yes! Second envelope fits into First";
-        const string COMPARE_RESULT_NEGATIVE = "No! Second envelope doesn't fit into First";
-        const string HELP_MESSAGE = "Envelope Width and Height must be positive numbers!";
-        const string EXIT_PROMPT_MESSAGE = "Exit now?";
-        const string EXIT_PROMPT_FULL = "yes";
-        const string EXIT_PROMPT_SHORT = "y";
-        
+        #region Constants
+        private const string INPUT_REQUEST_MESSAGE = "Please enter";
+        private const string FIRST_ENVELOPE_NAME = "First envelope";
+        private const string SECOND_ENVELOPE_NAME = "Second envelope";
+        private const string WIDTH_PARAM_NAME = "Width";
+        private const string HEIGHT_PARAM_NAME = "Height";
+        private const string COMPARE_RESULT_POSITIVE = "Yes! Second envelope fits into First";
+        private const string COMPARE_RESULT_NEGATIVE = "No! Second envelope doesn't fit into First";
+        private const string HELP_MESSAGE = "Envelope Width and Height must be positive numbers!";
+        private const string EXIT_PROMPT_MESSAGE = "Exit now?";
+        private const string EXIT_PROMPT_FULL = "yes";
+        private const string EXIT_PROMPT_SHORT = "y";
+        #endregion
+
         public static void RequestParams(Envelpoes envelopeNumber, out double width, out double height)
         {
             string envelopeName = "";

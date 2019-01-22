@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace _7_NumberRow
 {
-    class NaturalNumberRowIterator : IEnumerator<int>
+    class NaturalNumberRowIterator : IEnumerator<uint>
     {
         public NaturalNumberRowIterator(NaturalNumberRow numRow)
         {
             _numberRow = numRow;
         }
 
-        public int Current => _current.NumValue;
+        public uint Current => _current.NumValue;
 
         object IEnumerator.Current => _current.NumValue;
 

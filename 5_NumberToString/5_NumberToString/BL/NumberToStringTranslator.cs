@@ -8,12 +8,14 @@ namespace _5_NumberToString
 {
     class NumberToStringTranslator
     {
-        const int MAX_FIXED_NAME_NUMBER = 19;
-        const int THREE_DIGIT = 1000;
-        const int TWO_DIGIT = 100;
-        const int ONE_DIGIT = 10;
-        const string MINUS_MARKER = "minus ";
-        const string HUNDRED_MARKER = "hundred";
+        #region Constants
+        private const int MAX_FIXED_NAME_NUMBER = 19;
+        private const int THREE_DIGIT = 1000;
+        private const int TWO_DIGIT = 100;
+        private const int ONE_DIGIT = 10;
+        private const string MINUS_MARKER = "minus ";
+        private const string HUNDRED_MARKER = "hundred";
+        #endregion
 
         public NumberToStringTranslator(int numericInput)
         {

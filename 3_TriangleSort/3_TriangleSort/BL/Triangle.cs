@@ -8,10 +8,12 @@ namespace _3_TriangleSort
 {
     class Triangle : IComparable<Triangle>
     {
-        const string BUILD_ERROR_MESSAGE = "Unable to build triangle with current parameters!";
-        const string TRIANGLE_WORD = "Triangle";
-        const string LENGTH_UNITS = "cm";
- 
+        #region Constants
+        private const string BUILD_ERROR_MESSAGE = "Unable to build triangle with current parameters!";
+        private const string TRIANGLE_WORD = "Triangle";
+        private const string LENGTH_UNITS = "cm";
+        #endregion
+
         public Triangle(string inputName, double inputSide1, double inputSide2, double inputSide3)
         {
             Name = inputName;

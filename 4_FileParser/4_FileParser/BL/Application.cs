@@ -9,8 +9,10 @@ namespace _4_FileParser
 {
     static class Application
     {
-        const int MIN_ARGS_LENGTH = 2;
-        const int MAX_ARGS_LENGTH = 3;        
+        #region Constants
+        private const int MIN_ARGS_LENGTH = 2;
+        private const int MAX_ARGS_LENGTH = 3;
+        #endregion
 
         public static void Run(string[] args)
         {

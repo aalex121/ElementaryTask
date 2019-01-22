@@ -8,8 +8,10 @@ namespace _5_NumberToString
 {
     static class UI
     {
-        const string PRESS_ANY_KEY_MESSAGE = "Press any key...";
-        const string HELP_MESSAGE = "Please provide an integer in range:";
+        #region Constants
+        private const string PRESS_ANY_KEY_MESSAGE = "Press any key...";
+        private const string HELP_MESSAGE = "Please provide an integer in range:";
+        #endregion
 
         public static void ShowMessage(UIMessageTypes message)
         {

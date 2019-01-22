@@ -9,11 +9,13 @@ namespace _4_FileParser
 {
     static class UI
     {
-        const string HELP_MESSAGE = "Usage: <File path> <Searched line> [New line]";
-        const string FILE_NOT_FOUND = "Txt file not found!";
-        const string LINE_ENTRY_COUNT = "Line entries found";
-        const string PRESS_ANY_KEY_MESSAGE = "Press any key...";
-        const string LINE_NOT_FOUND = "Searched line does not exist!";
+        #region Constants
+        private const string HELP_MESSAGE = "Usage: <File path> <Searched line> [New line]";
+        private const string FILE_NOT_FOUND = "Txt file not found!";
+        private const string LINE_ENTRY_COUNT = "Line entries found";
+        private const string PRESS_ANY_KEY_MESSAGE = "Press any key...";
+        private const string LINE_NOT_FOUND = "Searched line does not exist!";
+        #endregion
 
         public static void ShowMessage(MessageTypes messageType, params string[] moreInfo)
         {

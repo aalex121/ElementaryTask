@@ -7,31 +7,28 @@ using System.Threading.Tasks;
 
 namespace _7_NumberRow
 {
-    class NaturalNumberRow : IEnumerable<int>
+    class NaturalNumberRow : IEnumerable<uint>
     {
-        const int MIN_TARGET_VALUE = 2;
+        #region Constants
+        private const int MIN_TARGET_VALUE = 2;
+        #endregion
 
-        public NaturalNumberRow(int inputNumber)
+        public NaturalNumberRow(uint inputNumber)
         {
             if (inputNumber < MIN_TARGET_VALUE)
             {
                 throw new InvalidNubmerRowParameterException(inputNumber, MIN_TARGET_VALUE);
             }
 
-            GenerateNumberRow(inputNumber, ref _head, ref _tail);
+            TargetNumber = inputNumber;
+            GenerateNumberRow(inputNumber);
         }
 
-        public int TargetNumber { get; private set; }
+        public uint TargetNumber { get; private set; }
 
-        public RowElement Head
-        {
-            get
-            {
-                return _head;
-            }
-        }
+        public RowElement Head { get; private set; }        
 
-        public static bool GenerateNumberRow(int targetNumber, ref RowElement head, ref RowElement tail)
+        public bool GenerateNumberRow(uint targetNumber)
         {
             bool isRowGenerated = false;
 
@@ -42,31 +39,31 @@ namespace _7_NumberRow
 
             RowElement previous = null;
 
-            for (int i = 1; i < targetNumber; i++)
+            for (uint i = 1; i < targetNumber; i++)
             {
-                if (i * i < targetNumber)
-                {                    
-                    if (head == null)
-                    {
-                        head = new RowElement(i);
-                        previous = head;
-                        continue;
-                    }
+                if ((ulong)i * i >= targetNumber)
+                {
+                    break;
+                }
 
-                    if (previous != null)
-                    {
-                        previous.Next = new RowElement(i);
-                        previous = previous.Next;
-                    }
+                if (Head == null)
+                {
+                    Head = new RowElement(i);
+                    previous = Head;
+                    continue;
+                }
+
+                if (previous != null)
+                {
+                    previous.Next = new RowElement(i);
+                    previous = previous.Next;
                 }
             }
-
-            tail = previous.Next;
 
             return isRowGenerated;
         }
 
-        public IEnumerator<int> GetEnumerator()
+        public IEnumerator<uint> GetEnumerator()
         {
             return new NaturalNumberRowIterator(this);
         }
@@ -78,18 +75,14 @@ namespace _7_NumberRow
 
         public class RowElement
         {
-            public RowElement(int inputValue)
+            public RowElement(uint inputValue)
             {
-                NumValue = inputValue;
+                NumValue = (uint)inputValue;
             }
 
-            public int NumValue { get; set; }
+            public uint NumValue { get; set; }
 
             public RowElement Next { get; set; }
         }
-
-        private RowElement _head = null;
-
-        private RowElement _tail = null;
     }
 }

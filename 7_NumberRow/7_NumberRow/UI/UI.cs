@@ -8,9 +8,11 @@ namespace _7_NumberRow
 {
     static class UI
     {
-        const string HELP_MESSAGE = "Plese provide a number in range from 2 to 2147483647 as first parameter";        
-        const string PRESS_ANY_KEY_MESSAGE = "Press any key...";
-        const string ERROR_MESSAGE = "Error!";
+        #region Constants
+        private const string HELP_MESSAGE = "Plese provide a number in range from 2 to 2147483647 as first parameter";
+        private const string PRESS_ANY_KEY_MESSAGE = "Press any key...";
+        private const string ERROR_MESSAGE = "Error!";
+        #endregion
 
         public static void ShowMessage(MessageTypes messageType, params string[] moreInfo)
         {
@@ -37,7 +39,7 @@ namespace _7_NumberRow
             Console.ReadKey();
         }
 
-        public static void DisplayNumberRow(NaturalNumberRow numRow)
+        public static void DisplayNumberRow(IEnumerable<uint> numRow)
         {
             Console.WriteLine();
 

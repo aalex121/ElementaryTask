@@ -22,25 +22,31 @@ namespace _8_Fibonacci
                 RowEndValue = start;
             }
             
-            _fibonacciRow = GenerateFibonacciRow(RowStartValue, RowEndValue);
+            _fibonacciRow = GenerateFibonacciRow(start, end);
         }
 
         public int RowStartValue { get; private set; }
 
         public int RowEndValue { get; private set; }
 
-        public static List<int> GenerateFibonacciRow(int start, int end)
+        public static IEnumerable<int> GenerateFibonacciRow(int start, int end)
         {
-            List<int> output = new List<int>();
-
+            SortedSet<int> output = new SortedSet<int>();
+            
             if (start < 0)
-            {
-                GenerateFibonacciRowNegative(output, start, end);
+            {   
+                foreach (int number in GenerateFibonacciRowNegative(start, end))
+                {
+                    output.Add(number);
+                }
             }
 
             if (end > 0)
             {
-                GenerateFibonacciRowPositive(output, start, end);
+                foreach (int number in GenerateFibonacciRowPositive(start, end))
+                {
+                    output.Add(number);
+                }
             }
 
             return output;
@@ -56,7 +62,7 @@ namespace _8_Fibonacci
             return _fibonacciRow.GetEnumerator();
         }
 
-        private static void GenerateFibonacciRowPositive(List<int> row, int start, int end)
+        private static IEnumerable<int> GenerateFibonacciRowPositive(int start, int end)
         {
             int fib1 = 0;
             int fib2 = 1;
@@ -69,12 +75,12 @@ namespace _8_Fibonacci
 
                 if (fib2 >= start && fib2 <= end)
                 {
-                    row.Add(fib2);
+                    yield return fib2;
                 }
             }
         }
 
-        private static void GenerateFibonacciRowNegative(List<int> row, int start, int end)
+        private static IEnumerable<int> GenerateFibonacciRowNegative(int start, int end)
         {
             int fib1 = 0;
             int fib2 = -1;
@@ -87,13 +93,11 @@ namespace _8_Fibonacci
 
                 if (fib2 >= start && fib2 <= end)
                 {
-                    row.Add(fib2);
+                    yield return fib2;
                 }
             }
-
-            row.Sort();
         }
 
-        private List<int> _fibonacciRow = new List<int>();
+        private IEnumerable<int> _fibonacciRow = null;
     }
 }

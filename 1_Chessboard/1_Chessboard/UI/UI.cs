@@ -8,14 +8,16 @@ namespace _1_Chessboard
 {
     static class UI
     {
+        #region Constants
         public const ushort MAX_BOARD_WIDTH = 12;
         public const ushort MAX_BOARD_HEIGHT = 12;
-        const string SQUARE_SYMBOL = "  ";
-        const string NO_PARAMS_ERROR_MESSAGE = "Two parameters: WIDTH and HEIGHT are required.";
-        const string WIDTH_WORD = "Width";
-        const string HEIGHT_WORD = "Height";
-        const string REQUIREMENT_PHRASE = "must be an integer in range from 1 to";
-        
+        private const string SQUARE_SYMBOL = "  ";
+        private const string NO_PARAMS_ERROR_MESSAGE = "Two parameters: WIDTH and HEIGHT are required.";
+        private const string WIDTH_WORD = "Width";
+        private const string HEIGHT_WORD = "Height";
+        private const string REQUIREMENT_PHRASE = "must be an integer in range from 1 to";
+        #endregion
+
         public static void DrawChessboard(Chessboard board)
         {
             int width = board.Width;

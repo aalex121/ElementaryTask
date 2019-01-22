@@ -8,7 +8,9 @@ namespace _8_Fibonacci
 {
     static class Application
     {
-        const int MIN_VALID_ARGS_LENGTH = 2;
+        #region Constants
+        private const int MIN_VALID_ARGS_LENGTH = 2;
+        #endregion
 
         public static void Run(string[] args)
         {

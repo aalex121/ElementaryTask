@@ -9,10 +9,12 @@ namespace _4_FileParser
 {
     class TxtFileParser
     {
+        #region Constants
         public const string VALID_FILE_EXTENSION = ".txt";
-        const string TEMP_FILE_NAME = "TempTxtFile.txt";        
-        const string NO_FILE_MESSAGE = "No .txt file";
-        const int LARGE_FILE_SIZE = 50000000;        
+        private const string TEMP_FILE_NAME = "TempTxtFile.txt";
+        private const string NO_FILE_MESSAGE = "No .txt file";
+        private const int LARGE_FILE_SIZE = 50000000;
+        #endregion
 
         public TxtFileParser(string inputFilePath)
         {
@@ -67,9 +69,6 @@ namespace _4_FileParser
 
             return isSuccessfull;
         }
-
-        private string _filePath;
-        private bool _isFileLarge;
 
         private bool ReplaceLineInSmallFile(string searchedLine, string newLineText)
         {
@@ -129,5 +128,8 @@ namespace _4_FileParser
             FileInfo info = new FileInfo(filePath);
             return info.Length > LARGE_FILE_SIZE;            
         }
+
+        private string _filePath;
+        private bool _isFileLarge;
     }
 }
