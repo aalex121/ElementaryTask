@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace _8_Fibonacci
 {
-    static class Application
+    public class Application
     {
         #region Constants
         private const int MIN_VALID_ARGS_LENGTH = 2;
         #endregion
 
-        public static void Run(string[] args)
+        public void Run(string[] args)
         {
             int startValue;
             int endValue;
@@ -28,7 +28,7 @@ namespace _8_Fibonacci
             UI.PrintNumericRow(row);
         }
 
-        private static bool ValidateUserInput(string[] args, out int start, out int end)
+        private bool ValidateUserInput(string[] args, out int start, out int end)
         {
             bool isValid = false;
             start = 0;

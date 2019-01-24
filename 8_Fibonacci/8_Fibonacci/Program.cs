@@ -9,8 +9,9 @@ namespace _8_Fibonacci
     class Program
     {
         static void Main(string[] args)
-        {   
-            Application.Run(args);
+        {
+            Application thisApplication = new Application();
+            thisApplication.Run(args);
         }
     }
 }

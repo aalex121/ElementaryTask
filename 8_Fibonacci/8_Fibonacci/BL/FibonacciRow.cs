@@ -7,9 +7,23 @@ using System.Threading.Tasks;
 
 namespace _8_Fibonacci
 {
-    class FibonacciRow : IEnumerable<int>
+    public class FibonacciRow : IEnumerable<int>
     {
+        public FibonacciRow() 
+            : this(0, 0)
+        {
+        }
+
         public FibonacciRow(int start, int end)
+        {
+            _fibonacciRow = GenerateFibonacciRow(start, end);
+        }        
+
+        public int RowStartValue { get; private set; }
+
+        public int RowEndValue { get; private set; }
+
+        public SortedSet<int> GenerateFibonacciRow(int start, int end)
         {
             if (start < end)
             {
@@ -21,29 +35,20 @@ namespace _8_Fibonacci
                 RowStartValue = end;
                 RowEndValue = start;
             }
-            
-            _fibonacciRow = GenerateFibonacciRow(start, end);
-        }
 
-        public int RowStartValue { get; private set; }
-
-        public int RowEndValue { get; private set; }
-
-        public static IEnumerable<int> GenerateFibonacciRow(int start, int end)
-        {
             SortedSet<int> output = new SortedSet<int>();
             
-            if (start < 0)
+            if (RowStartValue < 0)
             {   
-                foreach (int number in GenerateFibonacciRowNegative(start, end))
+                foreach (int number in GenerateFibonacciRowNegative(RowStartValue, RowEndValue))
                 {
                     output.Add(number);
                 }
             }
 
-            if (end > 0)
+            if (RowEndValue > 0)
             {
-                foreach (int number in GenerateFibonacciRowPositive(start, end))
+                foreach (int number in GenerateFibonacciRowPositive(RowStartValue, RowEndValue))
                 {
                     output.Add(number);
                 }
