@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _7_NumberRow
 {
-    class NaturalNumberRowIterator : IEnumerator<uint>
+    public class NaturalNumberRowIterator : IEnumerator<uint>
     {
         public NaturalNumberRowIterator(NaturalNumberRow numRow)
         {

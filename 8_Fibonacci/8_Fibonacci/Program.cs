@@ -10,8 +10,7 @@ namespace _8_Fibonacci
     {
         static void Main(string[] args)
         {
-            Application thisApplication = new Application();
-            thisApplication.Run(args);
+            Application.Run(args);
         }
     }
 }

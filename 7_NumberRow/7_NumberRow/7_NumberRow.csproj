@@ -43,10 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BL\Application.cs" />
+    <Compile Include="Application.cs" />
     <Compile Include="BL\NaturalNumberRow.cs" />
     <Compile Include="BL\NaturalNumberRowIterator.cs" />
-    <Compile Include="Exceptions\InvalidNuberRowParameterException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\EnumMessageTypes.cs" />

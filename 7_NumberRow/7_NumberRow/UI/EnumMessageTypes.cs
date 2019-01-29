@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _7_NumberRow
 {
-    enum MessageTypes
+    public enum MessageTypes
     {
         None = 0,
         Help = 1,

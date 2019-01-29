@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BL\Application.cs" />
+    <Compile Include="Application.cs" />
     <Compile Include="Enums\ThreeDigitals.cs" />
     <Compile Include="Enums\Dozens.cs" />
     <Compile Include="Enums\Numbers.cs" />

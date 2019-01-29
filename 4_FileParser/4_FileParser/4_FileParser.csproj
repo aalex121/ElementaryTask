@@ -41,11 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BL\Application.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="Enums\EnumDataProviderTypes.cs" />
+    <Compile Include="BL\ITxtFileProcessor.cs" />
+    <Compile Include="BL\DataProviderFactory.cs" />
     <Compile Include="BL\TxtFileParser.cs" />
+    <Compile Include="BL\TxtFileProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\EnumMessageTypes.cs" />
+    <Compile Include="Stubs\FakeFileProcessor.cs" />
+    <Compile Include="Enums\EnumMessageTypes.cs" />
     <Compile Include="UI\UI.cs" />
   </ItemGroup>
   <ItemGroup>

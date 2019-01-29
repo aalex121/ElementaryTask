@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _7_NumberRow
 {
-    static class UI
+    public static class UI
     {
         #region Constants
         private const string HELP_MESSAGE = "Plese provide a number in range from 2 to 2147483647 as first parameter";

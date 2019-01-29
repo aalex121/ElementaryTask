@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _5_NumberToString
 {
-    class NumberToStringTranslator
+    public class NumberToStringTranslator
     {
         #region Constants
         private const int MAX_FIXED_NAME_NUMBER = 19;
@@ -23,7 +23,19 @@ namespace _5_NumberToString
             NumberStringValue = TranslateNumberToString(numericInput);
         }
 
-        public int NumberIntValue { get; private set; }
+        public int NumberIntValue
+        {
+            get
+            {
+                return _intValue;
+            }
+            set
+            {
+                _intValue = value;
+                NumberStringValue = TranslateNumberToString(value);
+            }
+        }
+
         public string NumberStringValue { get; private set; }
 
         public static string TranslateNumberToString(int numericInput)
@@ -66,7 +78,7 @@ namespace _5_NumberToString
                 outputBuilder.Insert(0, MINUS_MARKER);
             }
 
-            return outputBuilder.ToString();
+            return outputBuilder.ToString().TrimEnd();
         }
 
         private static string TranslateThreeDigitNuberToString(int numericInput)
@@ -77,7 +89,7 @@ namespace _5_NumberToString
             {
                 string hundreds = string.Format("{0} {1} ",
                     Enum.GetName(typeof(Numbers), numericInput / TWO_DIGIT),
-                    HUNDRED_MARKER);
+                        HUNDRED_MARKER);
 
                 outputBuilder.Append(hundreds);
             }
@@ -110,5 +122,7 @@ namespace _5_NumberToString
 
             return outputBuilder.ToString();
         }
+
+        private int _intValue;
     }
 }

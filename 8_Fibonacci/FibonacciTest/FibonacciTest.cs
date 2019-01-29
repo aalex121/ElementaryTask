@@ -14,8 +14,7 @@ namespace FibonacciTest
         [TestInitialize]
         public void TestInitialize()
         {
-            _testRow = new FibonacciRow();
-            _expectedRow = new SortedSet<int>();
+            _testRow = new FibonacciRow();        
         }
 
         [TestMethod]
@@ -24,7 +23,7 @@ namespace FibonacciTest
             //Arrange
             int testLimitPositive = 8;
             _expectedRow = new SortedSet<int> { 1, 2, 3, 5, 8 };
-            bool isSame = false;
+            bool isSame = false;            
 
             //Act            
             SortedSet<int> actualRow = _testRow.GenerateFibonacciRow(1, testLimitPositive);
@@ -68,5 +67,40 @@ namespace FibonacciTest
         }
     }
 
-    //public class 
+    [TestClass]
+    public class InputValidatorTest
+    {
+        [TestMethod]
+        public void TestUserInputValidatorExpectTrue()
+        {
+            //Arrange
+            string[] inputStringArray = new string[] { "5", "8" };
+            int methodOutputStart;
+            int methodOutputEnd;
+
+            //Act
+            bool expectedOutput = InputValidator.ValidateUserInput(inputStringArray,
+                out methodOutputStart, out methodOutputEnd);
+
+            //Assert
+            Assert.IsTrue(expectedOutput);
+        }
+
+        [TestMethod]
+        [DataRow(new string[] { "a", "b" })]
+        [DataRow(new string[] { "8", "" })]        
+        public void TestUserInputValidatorExpectFalse(string[] inputStringArray)
+        {
+            //Arrange            
+            int methodOutputStart;
+            int methodOutputEnd;
+
+            //Act
+            bool expectedOutput = InputValidator.ValidateUserInput(inputStringArray,
+                out methodOutputStart, out methodOutputEnd);
+
+            //Assert
+            Assert.IsFalse(expectedOutput);
+        }
+    }
 }
