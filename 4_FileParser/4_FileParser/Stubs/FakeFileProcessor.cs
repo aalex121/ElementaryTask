@@ -9,10 +9,15 @@ namespace _4_FileParser
 {
     public class FakeFileProcessor : ITxtFileProcessor
     {
+
+        #region Constants
+        public const string VALID_FAKE_FILE = "fake.txt";
+        #endregion
+
         public FakeFileProcessor(TxtFileParser parser)
         {
             _parser = parser;
-            _filePath = Path.GetFullPath(parser.FilePath);
+            _filePath = parser.FilePath;
             LargeFile = false;
 
             Data = new string[]
@@ -25,22 +30,18 @@ namespace _4_FileParser
             };
         }
 
-        public FakeFileProcessor(TxtFileParser parser, string[] inputData, bool largeFile)
-        {
-            _parser = parser;
-            _filePath = Path.GetFullPath(parser.FilePath);
-            Data = inputData;
-
-            LargeFile = largeFile;
-        }
-
         public string[] Data { get; set; }
 
         public bool LargeFile { get; set; }
 
         public bool CheckFileExistance()
         {
-            return true;
+            if (_filePath == VALID_FAKE_FILE)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public int CountLineEntries(string searchedLine)
@@ -71,13 +72,6 @@ namespace _4_FileParser
         public void OverwriteAllFile(string[] source)
         {
             Data = (string[])source.Clone();
-
-            Console.WriteLine("INSIDE");
-            for (int i = 0; i < Data.Length; i++)
-            {
-                Console.WriteLine(Data[i]);
-            }
-            Console.WriteLine();
         }
 
         public bool OverWriteLineByLine(string searchedLine, string newLineText)
@@ -93,7 +87,7 @@ namespace _4_FileParser
                 if (Data[i] != currentLine)
                 {
                     Data[i] = parsedLine;
-                    areChangesMade = true;
+                    areChangesMade = true;                    
                 }                
             }
 
@@ -106,7 +100,6 @@ namespace _4_FileParser
         }
 
         private TxtFileParser _parser;
-        private string _filePath;
-        private bool _isFileLarge = false;
+        private string _filePath;        
     }
 }

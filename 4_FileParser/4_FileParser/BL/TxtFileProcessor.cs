@@ -9,10 +9,9 @@ namespace _4_FileParser
 {
     public class TxtFileProcessor : ITxtFileProcessor
     {
-        #region Constants        
-        private const string TEMP_FILE_NAME = "TempTxtFile.txt";        
-        private const int LARGE_FILE_SIZE = 50000000;
-        //private const int LARGE_FILE_SIZE = 1;
+        #region Constants
+        public const string VALID_FILE_EXTENSION = ".txt";
+        private const int LARGE_FILE_SIZE = 50000000;        
         #endregion
 
         public TxtFileProcessor(TxtFileParser parser)
@@ -60,10 +59,8 @@ namespace _4_FileParser
         public bool OverWriteLineByLine(string searchedLine, string newLineText)
         {
             bool areChangesMade = false;
-
             string currentLine = string.Empty;
-
-            string tempFilePath = Path.Combine(Environment.CurrentDirectory, TEMP_FILE_NAME);
+            string tempFilePath = Path.GetTempFileName();
 
             using (StreamReader source = new StreamReader(_filePath))
             {
@@ -99,6 +96,19 @@ namespace _4_FileParser
         public bool CheckFileExistance()
         {            
             return File.Exists(_filePath);
+        }
+
+        public static bool ValidateFilePathInput(ref string path)
+        {
+            path = Path.GetFullPath(path);
+            bool isValid = false;
+
+            if (File.Exists(path))
+            {
+                isValid = Path.GetExtension(path) == VALID_FILE_EXTENSION;
+            }
+
+            return isValid;
         }
 
         private string _filePath;        

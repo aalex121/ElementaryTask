@@ -8,8 +8,7 @@ namespace FileParserTest
     [TestClass]
     public class TxtFileParserTest
     {
-        private string[] _fakeFileContent;
-        private string fakeFileName = "fake.txt";
+        private string[] _fakeFileContent;        
 
         [TestInitialize]
         public void TestInitialize()
@@ -20,7 +19,8 @@ namespace FileParserTest
                 "Dogs",
                 "Cats",
                 "Cats",
-                "Dogs"
+                "Dogs",
+                "Horse"
             };
         }
 
@@ -28,8 +28,8 @@ namespace FileParserTest
         public void TestCountLineEntriesExpected3()
         {
             //Arrange
-            TxtFileParser parser = new TxtFileParser(fakeFileName, DataProviderTypes.Fake);
-            FakeFileProcessor processor = parser.GetFileProcessor() as FakeFileProcessor;
+            TxtFileParser parser = new TxtFileParser(FakeFileProcessor.VALID_FAKE_FILE, DataProviderTypes.Fake);
+            FakeFileProcessor processor = parser.CurrentFileProcessor as FakeFileProcessor;
             processor.Data = _fakeFileContent;
 
             string testLine = "Cats";
@@ -42,39 +42,97 @@ namespace FileParserTest
             Assert.AreEqual(expectedEntries, actualEntries);
         }
 
-        //[TestMethod]
-        //public void TestReplaceLinesSmallFile()
-        //{
-        //    //Arrange
-        //    TxtFileParser parser = new TxtFileParser(fakeFileName, DataProviderTypes.Fake);
-        //    FakeFileProcessor processor = parser.GetFileProcessor() as FakeFileProcessor;
-        //    processor.Data = _fakeFileContent;
-        //    processor.LargeFile = false;
+        [TestMethod]
+        public void TestReplaceLinesSmallFileExpectTrue()
+        {
+            //Arrange
+            TxtFileParser parser = new TxtFileParser(FakeFileProcessor.VALID_FAKE_FILE, DataProviderTypes.Fake);
+            FakeFileProcessor processor = parser.CurrentFileProcessor as FakeFileProcessor;
+            processor.Data = _fakeFileContent;
+            processor.LargeFile = false;
 
-        //    string searchedLine = "Cats";
-        //    string newLine = "Mice";
+            string searchedLine = "Cats";
+            string newLine = "Mice";
 
-        //    string[] expectedOutput = new string[]
-        //    {
-        //        "Mice",
-        //        "Dogs",
-        //        "Mice",
-        //        "Mice",
-        //        "Dogs"
-        //    };
+            string[] expectedOutput = new string[]
+            {
+                "Mice",
+                "Dogs",
+                "Mice",
+                "Mice",
+                "Dogs",
+                "Horse"
+            };
 
-        //    //Act
-        //    parser.ReplaceLine(searchedLine, newLine);
-        //    bool expectedResult = CheckArraysEquality(expectedOutput, parser.CurrentFileProcessor.ReadAllFile());
+            //Act
+            parser.ReplaceLine(searchedLine, newLine);
+            string[] actualContent = parser.CurrentFileProcessor.ReadAllFile();
+            bool expectedResult = CheckArraysEquality(expectedOutput, actualContent);
 
-        //    foreach (string item in parser.CurrentFileProcessor.ReadAllFile())
-        //    { 
-        //        Console.WriteLine(item);
-        //    }
+            //Assert
+            Assert.IsTrue(expectedResult);
+        }
 
-        //    //Assert
-        //    Assert.IsTrue(expectedResult);
-        //}
+        [TestMethod]
+        public void TestReplaceLinesLargeFileExpectTrue()
+        {
+            //Arrange
+            TxtFileParser parser = new TxtFileParser(FakeFileProcessor.VALID_FAKE_FILE, DataProviderTypes.Fake);
+            FakeFileProcessor processor = parser.CurrentFileProcessor as FakeFileProcessor;
+            processor.Data = _fakeFileContent;
+            processor.LargeFile = true;
+
+            string searchedLine = "Cats";
+            string newLine = "Mice";
+
+            string[] expectedOutput = new string[]
+            {
+                "Mice",
+                "Dogs",
+                "Mice",
+                "Mice",
+                "Dogs",
+                "Horse"
+            };
+
+            //Act
+            parser.ReplaceLine(searchedLine, newLine);
+            string[] actualContent = parser.CurrentFileProcessor.ReadAllFile();
+            bool expectedResult = CheckArraysEquality(expectedOutput, actualContent);
+
+            //Assert
+            Assert.IsTrue(expectedResult);
+        }
+
+        [TestMethod]
+        public void TestCountLinesInInvalidFileExpected0()
+        {
+            //Arrange
+            TxtFileParser parser = new TxtFileParser("invalidFile.jpg", DataProviderTypes.Fake);
+            string searchedLine = "Cats";
+
+            //Act
+            int actualOutput = parser.CountLineEntries(searchedLine);
+
+            //Assert
+            Assert.AreEqual(0, actualOutput);
+        }
+
+        [TestMethod]
+        public void TestRepalceInInvalidFileExpectedFalse()
+        {
+            //Arrange
+            TxtFileParser parser = new TxtFileParser("invalidFile.jpg", DataProviderTypes.Fake);
+
+            string searchedLine = "Cats";
+            string newLine = "Mice";
+
+            //Act
+            bool actualOutput = parser.ReplaceLine(searchedLine, newLine);
+
+            //Assert
+            Assert.IsFalse(actualOutput);
+        }
 
         private bool CheckArraysEquality(string[] expected, string[] actual)
         {

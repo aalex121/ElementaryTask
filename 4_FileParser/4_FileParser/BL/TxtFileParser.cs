@@ -19,12 +19,14 @@ namespace _4_FileParser
         {   
             FilePath = inputFilePath;
             DataProviderType = DataProviderTypes.Real;
+            CurrentFileProcessor = DataProviderFactory.GetFileProcessor(this);
         }
 
         public TxtFileParser(string inputFilePath, DataProviderTypes inputDataProviderType)
         {
             FilePath = inputFilePath;
             DataProviderType = inputDataProviderType;
+            CurrentFileProcessor = DataProviderFactory.GetFileProcessor(this);
         }
 
         public string FilePath { get; private set; }
@@ -35,12 +37,11 @@ namespace _4_FileParser
 
         public int CountLineEntries(string searchedLine)
         {
-            ITxtFileProcessor fileProcessor = GetFileProcessor();
             int result = 0;
 
-            if (fileProcessor != null)
+            if (CurrentFileProcessor != null)
             {
-                result = fileProcessor.CountLineEntries(searchedLine);
+                result = CurrentFileProcessor.CountLineEntries(searchedLine);
             }
 
             return result;
@@ -48,31 +49,28 @@ namespace _4_FileParser
 
         public bool ReplaceLine(string searchedLine, string newLineText)
         {
-            ITxtFileProcessor fileProcessor = GetFileProcessor();
-
-            if (fileProcessor == null)
+            if (CurrentFileProcessor == null)
             {
                 return false;
             }
 
             bool isSuccessfull = false;
 
-            if (fileProcessor.IsFileLarge())
+            if (CurrentFileProcessor.IsFileLarge())
             {
-                isSuccessfull = ReplaceLineInLargeFile(searchedLine, newLineText, fileProcessor);
+                isSuccessfull = ReplaceLineInLargeFile(searchedLine, newLineText);
             }
             else
             {
-                isSuccessfull = ReplaceLineInSmallFile(searchedLine, newLineText, fileProcessor);
+                isSuccessfull = ReplaceLineInSmallFile(searchedLine, newLineText);
             }
 
             return isSuccessfull;
         }
 
-        private bool ReplaceLineInSmallFile(string searchedLine, string newLineText,
-            ITxtFileProcessor fileProcessor)
+        private bool ReplaceLineInSmallFile(string searchedLine, string newLineText)
         {
-            string[] source = fileProcessor.ReadAllFile();
+            string[] source = CurrentFileProcessor.ReadAllFile();
             bool areChangesMade = false;
 
             for (int i = 0; i < source.Length; i++)
@@ -86,16 +84,15 @@ namespace _4_FileParser
 
             if (areChangesMade)
             {
-                fileProcessor.OverwriteAllFile(source);
+                CurrentFileProcessor.OverwriteAllFile(source);
             }
 
             return areChangesMade;
         }
 
-        private bool ReplaceLineInLargeFile(string searchedLine, string newLineText,
-            ITxtFileProcessor fileProcessor)
+        private bool ReplaceLineInLargeFile(string searchedLine, string newLineText)
         {
-            bool areChangesMade = fileProcessor.OverWriteLineByLine(searchedLine, newLineText);
+            bool areChangesMade = CurrentFileProcessor.OverWriteLineByLine(searchedLine, newLineText);
 
             return areChangesMade;
         }
@@ -108,12 +105,6 @@ namespace _4_FileParser
             }
 
             return inputLine;
-        }
-
-        public ITxtFileProcessor GetFileProcessor()
-        {
-            CurrentFileProcessor = DataProviderFactory.GetFileProcessor(this);
-            return CurrentFileProcessor;
         }
     }
 }

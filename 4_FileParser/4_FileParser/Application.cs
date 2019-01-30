@@ -22,11 +22,10 @@ namespace _4_FileParser
                 return;
             }
 
-            string filePath = Path.GetFullPath(args[0]);                    
-
+            string filePath = args[0];
             string searchLine = args[1];
 
-            if (ValidateFilePathInput(filePath))
+            if (TxtFileProcessor.ValidateFilePathInput(ref filePath))
             {
                 if (args.Length >= MAX_ARGS_LENGTH)
                 {
@@ -41,22 +40,9 @@ namespace _4_FileParser
             else
             {
                 UI.ShowMessage(MessageTypes.FileNotFound);
-            }
-            
+            }            
         }
-
-        private static bool ValidateFilePathInput(string path)
-        {
-            bool isValid = false;
-
-            if (File.Exists(path))
-            {
-                isValid = Path.GetExtension(path) == TxtFileParser.VALID_FILE_EXTENSION;                              
-            }
-
-            return isValid;
-        }
-
+        
         private static void CountLineEntries(string path, string line)
         {
             TxtFileParser parser = new TxtFileParser(path);
@@ -71,7 +57,7 @@ namespace _4_FileParser
 
             if (parser.ReplaceLine(searchLine, newLine))
             {
-                UI.ShowFileContent(path);
+                UI.ShowFileContent(parser);
             }
             else
             {

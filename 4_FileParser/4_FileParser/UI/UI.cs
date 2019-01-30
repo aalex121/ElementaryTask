@@ -41,23 +41,18 @@ namespace _4_FileParser
 
             Console.WriteLine();
             Console.WriteLine(message);
+            Console.WriteLine(PRESS_ANY_KEY_MESSAGE);
             Console.WriteLine();
             Console.ReadKey();
         }
 
-        public static void ShowFileContent(string path)
+        public static void ShowFileContent(TxtFileParser parser)
         {
-            using (StreamReader file = new StreamReader(path))
+            string[] content = parser.CurrentFileProcessor.ReadAllFile();
+
+            foreach (string item in content)
             {
-                Console.WriteLine();
-
-                string currentString = file.ReadLine();
-
-                while (currentString != null)
-                {
-                    Console.WriteLine(currentString);
-                    currentString = file.ReadLine();
-                }
+                Console.WriteLine(item);
             }
 
             Console.WriteLine();
