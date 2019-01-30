@@ -9,41 +9,41 @@ namespace FibonacciTest
     public class FibonacciRowGenerationTest
     {
         private FibonacciRow _testRow;
-        private SortedSet<int> _expectedRow;
+        private int[] _expectedRow;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _testRow = new FibonacciRow();        
+            _testRow = new FibonacciRow();
         }
 
         [TestMethod]
-        public void TestPositiveRowGenerationExpectPositiveRow1To8()
+        public void TestPositiveRowGenerationExpectPositiveRow0To8()
         {
             //Arrange
             int testLimitPositive = 8;
-            _expectedRow = new SortedSet<int> { 1, 2, 3, 5, 8 };
-            bool isSame = false;            
+            _expectedRow = new int[] { 0, 1, 1, 2, 3, 5, 8 };
+            bool isSame = false;
 
             //Act            
-            SortedSet<int> actualRow = _testRow.GenerateFibonacciRow(1, testLimitPositive);
-            isSame = _expectedRow.SetEquals(actualRow);
+            IEnumerable<int> actualRow = _testRow.GenerateFibonacciRow(0, testLimitPositive);
+            isSame = CheckNumberRowEquality(_expectedRow, actualRow);
 
             //Assert            
             Assert.IsTrue(isSame);
         }
 
         [TestMethod]
-        public void TestNegativeRowGenerationExpectNegativeRow1To8()
+        public void TestNegativeRowGenerationExpectNegativeRow8To1()
         {
             //Arrange
             int testLimitNegative = -8;
-            _expectedRow = new SortedSet<int> { -1, -2, -3, -5, -8 };
+            _expectedRow = new int[] { -8, -5, -3, -2, -1, -1 };
             bool isSame = false;
 
             //Act            
-            SortedSet<int> actualRow = _testRow.GenerateFibonacciRow(-1, testLimitNegative);
-            isSame = _expectedRow.SetEquals(actualRow);
+            IEnumerable<int> actualRow = _testRow.GenerateFibonacciRow(-1, testLimitNegative);
+            isSame = CheckNumberRowEquality(_expectedRow, actualRow);
 
             //Assert            
             Assert.IsTrue(isSame);
@@ -55,52 +55,36 @@ namespace FibonacciTest
             //Arrange
             int testLimitPositive = 8;
             int testLimitNegative = -8;
-            _expectedRow = new SortedSet<int> { -1, -2, -3, -5, -8, 1, 2, 3, 5, 8 };
+            _expectedRow = new int[] { -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8 };
             bool isSame = false;
 
             //Act            
-            SortedSet<int> actualRow = _testRow.GenerateFibonacciRow(testLimitPositive, testLimitNegative);
-            isSame = _expectedRow.SetEquals(actualRow);
+            IEnumerable<int> actualRow = _testRow.GenerateFibonacciRow(testLimitNegative, testLimitPositive);
+            isSame = CheckNumberRowEquality(_expectedRow, actualRow);
 
             //Assert            
             Assert.IsTrue(isSame);
         }
-    }
 
-    [TestClass]
-    public class InputValidatorTest
-    {
-        [TestMethod]
-        public void TestUserInputValidatorExpectTrue()
+        private bool CheckNumberRowEquality(int[] expectedRow, IEnumerable<int> actualRow)
         {
-            //Arrange
-            string[] inputStringArray = new string[] { "5", "8" };
-            int methodOutputStart;
-            int methodOutputEnd;
+            bool areEqual = true;
+            int position = 0;
 
-            //Act
-            bool expectedOutput = InputValidator.ValidateUserInput(inputStringArray,
-                out methodOutputStart, out methodOutputEnd);
+            foreach (int item in actualRow)
+            {
+                if (item != expectedRow[position])
+                {
+                    areEqual = false;
+                    break;
+                }
 
-            //Assert
-            Assert.IsTrue(expectedOutput);
-        }
+                position++;
+            }
 
-        [TestMethod]
-        [DataRow(new string[] { "a", "b" })]
-        [DataRow(new string[] { "8", "" })]        
-        public void TestUserInputValidatorExpectFalse(string[] inputStringArray)
-        {
-            //Arrange            
-            int methodOutputStart;
-            int methodOutputEnd;
-
-            //Act
-            bool expectedOutput = InputValidator.ValidateUserInput(inputStringArray,
-                out methodOutputStart, out methodOutputEnd);
-
-            //Assert
-            Assert.IsFalse(expectedOutput);
+            return areEqual;
         }
     }
+
+
 }

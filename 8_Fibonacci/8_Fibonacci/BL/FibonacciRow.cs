@@ -23,7 +23,7 @@ namespace _8_Fibonacci
 
         public int RowEndValue { get; private set; }
 
-        public SortedSet<int> GenerateFibonacciRow(int start, int end)
+        public LinkedList<int> GenerateFibonacciRow(int start, int end)
         {
             if (start < end)
             {
@@ -36,21 +36,21 @@ namespace _8_Fibonacci
                 RowEndValue = start;
             }
 
-            SortedSet<int> output = new SortedSet<int>();
+            LinkedList<int> output = new LinkedList<int>();
             
             if (RowStartValue < 0)
             {   
                 foreach (int number in GenerateFibonacciRowNegative(RowStartValue, RowEndValue))
                 {
-                    output.Add(number);
+                    output.AddFirst(number);
                 }
             }
 
-            if (RowEndValue > 0)
+            if (RowEndValue >= 0)
             {
                 foreach (int number in GenerateFibonacciRowPositive(RowStartValue, RowEndValue))
                 {
-                    output.Add(number);
+                    output.AddLast(number);
                 }
             }
 
@@ -69,36 +69,54 @@ namespace _8_Fibonacci
 
         private static IEnumerable<int> GenerateFibonacciRowPositive(int start, int end)
         {
-            int fib1 = 0;
-            int fib2 = 1;
+            int number1 = 0;
+            int number2 = 1;
+            int numberSum = 0;
 
-            while (fib2 < end)
+            while (numberSum <= end)
             {
-                int temp = fib2;
-                fib2 += fib1;
-                fib1 = temp;
+                numberSum = number1 + number2;
 
-                if (fib2 >= start && fib2 <= end)
+                if (number1 == 0 && start <= 0)
                 {
-                    yield return fib2;
+                    yield return 0;
                 }
-            }
+
+                number1 = number2;
+                number2 = numberSum;
+
+                if (numberSum >= start && numberSum <= end)
+                {
+                    if (number2 == 1)
+                    {
+                        yield return 1;
+                    }
+
+                    yield return numberSum;
+                }
+            }            
         }
 
         private static IEnumerable<int> GenerateFibonacciRowNegative(int start, int end)
         {
-            int fib1 = 0;
-            int fib2 = -1;
+            int number1 = 0;
+            int number2 = -1;
+            int numberSum = 0;
 
-            while (fib2 > start)
+            while (numberSum >= start)
             {
-                int temp = fib2;
-                fib2 += fib1;
-                fib1 = temp;
+                numberSum = number1 + number2;
+                number1 = number2;
+                number2 = numberSum;
 
-                if (fib2 >= start && fib2 <= end)
+                if (numberSum >= start && numberSum <= end)
                 {
-                    yield return fib2;
+                    if (number2 == -1)
+                    {
+                        yield return -1;
+                    }
+
+                    yield return numberSum;
                 }
             }
         }
