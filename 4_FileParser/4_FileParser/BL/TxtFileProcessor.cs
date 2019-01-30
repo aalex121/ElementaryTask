@@ -98,19 +98,6 @@ namespace _4_FileParser
             return File.Exists(_filePath);
         }
 
-        public static bool ValidateFilePathInput(ref string path)
-        {
-            path = Path.GetFullPath(path);
-            bool isValid = false;
-
-            if (File.Exists(path))
-            {
-                isValid = Path.GetExtension(path) == VALID_FILE_EXTENSION;
-            }
-
-            return isValid;
-        }
-
         private string _filePath;        
         private readonly TxtFileParser _parser;
     }

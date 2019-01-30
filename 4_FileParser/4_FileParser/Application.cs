@@ -24,36 +24,41 @@ namespace _4_FileParser
 
             string filePath = args[0];
             string searchLine = args[1];
-
-            if (TxtFileProcessor.ValidateFilePathInput(ref filePath))
+            
+            if (args.Length >= MAX_ARGS_LENGTH)
             {
-                if (args.Length >= MAX_ARGS_LENGTH)
-                {
-                    string newLine = args[2];
-                    ChangeLines(filePath, searchLine, newLine);
-                }
-                else
-                {
-                    CountLineEntries(filePath, searchLine);
-                }
+                string newLine = args[2];
+                ChangeLines(filePath, searchLine, newLine);
             }
             else
             {
-                UI.ShowMessage(MessageTypes.FileNotFound);
-            }            
+                CountLineEntries(filePath, searchLine);
+            }        
         }
         
         private static void CountLineEntries(string path, string line)
         {
             TxtFileParser parser = new TxtFileParser(path);
-            int entryCount = parser.CountLineEntries(line);
 
+            if (parser.CurrentFileProcessor == null)
+            {
+                UI.ShowMessage(MessageTypes.FileNotFound);
+                return;
+            }
+
+            int entryCount = parser.CountLineEntries(line);
             UI.ShowMessage(MessageTypes.LineEntryCount, entryCount.ToString());
         }
 
         private static void ChangeLines(string path, string searchLine, string newLine)
         {
             TxtFileParser parser = new TxtFileParser(path);
+
+            if (parser.CurrentFileProcessor == null)
+            {
+                UI.ShowMessage(MessageTypes.FileNotFound);
+                return;
+            }
 
             if (parser.ReplaceLine(searchLine, newLine))
             {
